@@ -1,5 +1,5 @@
 import React from 'react';
-import IconMenu from '../components/IconMenu'
+import ReactDOM from 'react-dom';
 
 function SpaceStationsPage() {
     return <h1>The Space Stations Page</h1>

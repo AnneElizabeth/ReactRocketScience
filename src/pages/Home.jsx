@@ -1,16 +1,13 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
-import IconMenu from '../components/IconMenu';
-import Link from 'react-router-dom';
+import ReactDOM from 'react-dom';
 
 function HomePage() {
     return (
-    <>
-        <h1>My Home Page</h1>
-        <Link to='./Spacecraft'>Spacecraft</Link>
-        <Link to='./SpaceStations'>Spacecraft</Link>
-        <Link to='./SpaceVehicles'>Spacecraft</Link>
-    </>
-    )
+        <>
+            <h1>Diss iss ze herm page</h1>
+        </> 
+    )    
 }
 
 export default HomePage;

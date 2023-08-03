@@ -1,8 +1,9 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
-import IconMenu from '../components/IconMenu'
+import ReactDOM from 'react-dom';
 
 function SpaceVehiclesPage() {
-    return <h1>The Space Stations Page</h1>
+    return <h1>The Space Vehicles Page</h1>
 }
 
 export default SpaceVehiclesPage;
