@@ -1,18 +1,16 @@
 /* eslint-disable no-unused-vars */
-import { useState } from 'react'
-import React from 'react';
+import React, { useEffect, useState } from 'react'
 import ReactDOM from 'react-dom';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-//import HomePage from './pages/Home';
-import SpacecraftPage from './pages/Spacecraft';
-import SpaceStationsPage from './pages/SpaceStations';
-import SpaceVehiclesPage from './pages/SpaceVehicles';
+import SpacecraftPage from './pages/SpacecraftPage';
+import SpaceStationPage from './pages/SpaceStationPage';
+import SpaceVehiclePage from './pages/SpaceVehiclePage';
 import RootLayout from './components/Root';
-import ErrorPage from './pages/Error'
+import ErrorPage from './pages/Error';
 
 
 const router = createBrowserRouter([
@@ -21,13 +19,16 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       { path: '/spacecraft', element: <SpacecraftPage /> },
-      { path: '/spacestations', element: <SpaceStationsPage /> },
-      { path: '/spacevehicles', element: <SpaceVehiclesPage /> }
+      { path: '/spacestation', element: <SpaceStationPage /> },
+      { path: '/spacevehicle', element: <SpaceVehiclePage /> }
     ],
   }
 ])
 
+
+
 function App() {
+
 
   return (
     <div>
