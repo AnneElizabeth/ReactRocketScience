@@ -7,7 +7,9 @@ export default function SpaceStationAPICall() {
 
   const fetchSpaceStation = () => {
     fetch(baseURL, {
-      headers: { 'Authorization': 'Bearer ' + '36e8ead5d5f10412dce85c1b80667fc4f61d4e30' }
+      headers: {
+         'Authorization': '36e8ead5d5f10412dce85c1b80667fc4f61d4e30'
+      }
     })
     .then(response => {
         return response.json()

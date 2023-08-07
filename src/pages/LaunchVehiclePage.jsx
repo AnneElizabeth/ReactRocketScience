@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 
-export default function SpaceStationPage() {
-    const [spacestations, setSpacestations] = useState([]);
+export default function SpacecraftPage() {
+    const [launcher, setLauncher] = useState([]);
 
   const getData = () => {
     var requestOptions = {
@@ -10,9 +10,9 @@ export default function SpaceStationPage() {
       redirect: "follow",
     };
 
-    fetch("http://localhost:3030/spacestations", requestOptions)
+    fetch("http://localhost:3030/launcher", requestOptions)
       .then((response) => response.json())
-      .then((result) => setSpacestations(result))
+      .then((result) => setLauncher(result))
       .catch((error) => console.log("error", error));
   };
 
@@ -22,12 +22,12 @@ export default function SpaceStationPage() {
 
   return (
     <div>
-      {spacestations.map((spacestation) => (
-        <div key={spacestation.id}>
+      {launcher.map((singleLauncher) => (
+        <div key={singleLauncher.id}>
           <h3>
-            <span>{spacestation.id}</span> {spacestation.name}
+            <span>{singleLauncher.id}</span> {singleLauncher.name}
           </h3>
-          <p>{spacestation.founded}</p>
+          <p>{singleLauncher.manufacturer.country_code}</p>
         </div>
       ))}
     </div>

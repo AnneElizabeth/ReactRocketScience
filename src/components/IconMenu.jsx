@@ -32,9 +32,9 @@ export default function IconMenu () {
             <SatelliteAltOutlinedIcon fontSize="medium" />
             <ListItemText>Space Stations</ListItemText>
           </MenuItem>
-          <MenuItem component={Link} to='/spacevehicles'>
+          <MenuItem component={Link} to='/launchvehicles'>
             <AirlineSeatReclineNormalOutlinedIcon fontSize="medium" />
-            <ListItemText>Space Vehicles</ListItemText>
+            <ListItemText>Launch Vehicles</ListItemText>
           </MenuItem>
         </MenuList>
       </Paper>

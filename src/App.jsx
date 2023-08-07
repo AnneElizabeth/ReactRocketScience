@@ -1,6 +1,5 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react'
-import ReactDOM from 'react-dom';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
@@ -8,9 +7,10 @@ import '@fontsource/roboto/700.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import SpacecraftPage from './pages/SpacecraftPage';
 import SpaceStationPage from './pages/SpaceStationPage';
-import SpaceVehiclePage from './pages/SpaceVehiclePage';
+import LaunchVehiclePage from './pages/LaunchVehiclePage'
 import RootLayout from './components/Root';
 import ErrorPage from './pages/Error';
+//import Album from './components/Album'
 
 
 const router = createBrowserRouter([
@@ -19,8 +19,8 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       { path: '/spacecraft', element: <SpacecraftPage /> },
-      { path: '/spacestation', element: <SpaceStationPage /> },
-      { path: '/spacevehicle', element: <SpaceVehiclePage /> }
+      { path: '/spacestations', element: <SpaceStationPage /> },
+      { path: '/launchvehicles', element: <LaunchVehiclePage /> }
     ],
   }
 ])
@@ -33,7 +33,6 @@ function App() {
   return (
     <div>
       <RouterProvider router={router} />
-      
     </div>
   );
 }
