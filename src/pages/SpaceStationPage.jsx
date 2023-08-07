@@ -10,7 +10,7 @@ export default function SpaceStationPage() {
       redirect: "follow",
     };
 
-    fetch("http://localhost:3030/spacestations", requestOptions)
+    fetch("http://localhost:3000/spacestations", requestOptions)
       .then((response) => response.json())
       .then((result) => setSpacestations(result))
       .catch((error) => console.log("error", error));

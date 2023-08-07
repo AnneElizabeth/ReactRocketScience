@@ -10,7 +10,7 @@ export default function SpacecraftPage() {
       redirect: "follow",
     };
 
-    fetch("http://localhost:3030/spacecraft", requestOptions)
+    fetch("http://localhost:3000/spacecraft", requestOptions)
       .then((response) => response.json())
       .then((result) => setSpacecraft(result))
       .catch((error) => console.log("error", error));

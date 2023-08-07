@@ -11,6 +11,7 @@ import PublicOutlinedIcon from '@mui/icons-material/PublicOutlined';
 import RocketLaunchOutlinedIcon from '@mui/icons-material/RocketLaunchOutlined';
 import SatelliteAltOutlinedIcon from '@mui/icons-material/SatelliteAltOutlined';
 import AirlineSeatReclineNormalOutlinedIcon from '@mui/icons-material/AirlineSeatReclineNormalOutlined';
+import CommentOutlinedIcon from '@mui/icons-material/CommentOutlined';
 import { Link } from 'react-router-dom';
 
 export default function IconMenu () {
@@ -36,6 +37,11 @@ export default function IconMenu () {
             <AirlineSeatReclineNormalOutlinedIcon fontSize="medium" />
             <ListItemText>Launch Vehicles</ListItemText>
           </MenuItem>
+          <MenuItem component={Link} to='/comments'>
+            <CommentOutlinedIcon fontSize="medium" />
+            <ListItemText>Comments</ListItemText>
+          </MenuItem>
+
         </MenuList>
       </Paper>
   )

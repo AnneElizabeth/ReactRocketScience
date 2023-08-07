@@ -7,7 +7,8 @@ import '@fontsource/roboto/700.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import SpacecraftPage from './pages/SpacecraftPage';
 import SpaceStationPage from './pages/SpaceStationPage';
-import LaunchVehiclePage from './pages/LaunchVehiclePage'
+import LaunchVehiclePage from './pages/LaunchVehiclePage';
+import CommentsPage from './pages/CommentsPage';
 import RootLayout from './components/Root';
 import ErrorPage from './pages/Error';
 //import Album from './components/Album'
@@ -20,7 +21,9 @@ const router = createBrowserRouter([
     children: [
       { path: '/spacecraft', element: <SpacecraftPage /> },
       { path: '/spacestations', element: <SpaceStationPage /> },
-      { path: '/launchvehicles', element: <LaunchVehiclePage /> }
+      { path: '/launchvehicles', element: <LaunchVehiclePage /> },
+      { path: '/comments', element: <CommentsPage /> },
+
     ],
   }
 ])
