@@ -7,39 +7,40 @@ export default function CommentsPage() {
   // variables created for API link, state for existing users, new users and updated users data
   const API_URL = 'https://64d055bdff953154bb78ca25.mockapi.io/comments'
 
-  const [comments, setComments] = useState([])
+  const [userComments, setUserComments] = useState([])
+  const [userName, setUserName] = useState([])
 
-  const [newName, setNewName] = useState('')
+  const [newUserName, setNewUserName] = useState('')
   const [newUserComment, setNewUserComment] = useState('')
 
-  const [updatedName, setUpdatedName] = useState('')
+  const [updatedUserName, setUpdatedUserName] = useState('')
   const [updatedUserComment, setUpdatedUserComment] = useState('')
   
   useEffect(() => {
-      getComments
+      getUserComments
     }, [])
   
 // function for fetching users and displaying them
 
-  function getComments() {
+  function getUserComments() {
     fetch(API_URL)
       .then((data) => data.json())
       .then((data) => {
-        setComments(data)
+        setUserComments(data)
         console.log(data)
     })
   }
 
   // function for deleting a user
-  function deleteComment(id) {
+  function deleteUserComment(id) {
     fetch(API_URL + `/${id}`, {
       method: 'DELETE',
-    }).then(() => getComments())
+    }).then(() => getUserComments())
   }
 
 
   // function for creating a new user
-  function postNewComment(e) {
+  function postNewUserComment(e) {
     e.preventDefault()
     fetch(API_URL, {
       method: 'POST',
@@ -47,64 +48,64 @@ export default function CommentsPage() {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        name: newName,
+        name: newUserName,
         comment: newUserComment,
       }),
-    }).then(() => getComments())
+    }).then(() => getUserComments())
   }
 
   // function for updating an existing user
 
-  function updateComment(e, commentObject) {
+  function updateUserComment(e, userCommentObject) {
     e.preventDefault()
 
-    let updatedCommentObject = {
-      ...commentObject,
-      name: updatedName,
+    let updatedUserCommentObject = {
+      ...userCommentObject,
+      name: updatedUserName,
       comment: updatedUserComment,
     }
 
-    fetch(`${API_URL}/${commentObject.id}`, {
+    fetch(`${API_URL}/${userCommentObject.id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(updatedCommentObject),
-    }).then(() => getComments())
+      body: JSON.stringify(updatedUserCommentObject),
+    }).then(() => getUserComments())
   }
 
   // JSX for new and update user forms
   return (
     <div className="App">
       <form>
-        <h3>Comments</h3>
-        <label>Name</label>
-        <input onChange={(e) => setNewName(e.target.value)}></input><br></br>
+        <h3>Let Us Know Your Thoughts</h3>
+        <label>Your Name:</label>
+        <input onChange={(e) => setNewUserName(e.target.value)}></input><br></br>
         <label>Comment</label>
         <input onChange={(e) => setNewUserComment(e.target.value)}></input><br></br>
-        <button onClick={(e) => postNewComment(e)}>Submit</button>
+        <button onClick={(e) => postNewUserComment(e)}>Submit</button>
       </form>
       <br></br>
 
-      {comments.map((comment, index) => (
+      {userComments.map((userComment, index) => (
         <div className="mapContainer" key={index}>
           <div>
-            Name: {comment.name} <br></br>
-            Comment: {comment.userComment} <br></br>
-            <button onClick={() => deleteComment(comment.id)}>🗑</button>
+            Name: {userComment.name} <br></br>
+            Comment: {userComment.userComment} <br></br>
+            <button onClick={() => deleteUserComment(userComment.id)}>🗑</button>
           </div>
           <form>
-            <label>Update Name</label>
+            <label>Update Your Name:</label>
             <input
-              onChange={(e) => setUpdatedName(e.target.value)}
+              onChange={(e) => setUpdatedUserName(e.target.value)}
             ></input>
             <br></br>
-            <label>Update Comment</label>
+            <label>Update Your Comment:</label>
             <input
               onChange={(e) => setUpdatedUserComment(e.target.value)}
             ></input>
             <br></br>
-            <button onClick={(e) => updatedUserComment(e, comment)}>Update</button>
+            <button onClick={(e) => updatedUserComment(e, userComment)}>Update</button>
           </form>
         </div>
       ))}
