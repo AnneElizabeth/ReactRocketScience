@@ -1,5 +1,8 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
+import SpacecraftInfoCard from '../components/SpacecraftInfoCard'
+import Grid from '@mui/material/Grid';
+
 
 export default function SpacecraftPage() {
     const [spacecraft, setSpacecraft] = useState([]);
@@ -22,14 +25,11 @@ export default function SpacecraftPage() {
 
   return (
     <div>
-      {spacecraft.map((singleSpacecraft) => (
-        <div key={singleSpacecraft.id}>
-          <h3>
-            <span>{singleSpacecraft.id}</span> {singleSpacecraft.name}
-          </h3>
-          <p>{singleSpacecraft.time_in_space}</p>
-        </div>
-      ))}
+      <Grid container spacing={5} >
+        {spacecraft.map((spacecraft, index) => (
+            <SpacecraftInfoCard spacecraft={spacecraft} key={index} />
+        ))}
+      </Grid>
     </div>
   );
 }

@@ -1,15 +1,16 @@
+/* eslint-disable react/jsx-key */
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import './App.css';
 import SpacecraftPage from './pages/SpacecraftPage';
 import SpaceStationPage from './pages/SpaceStationPage';
 import LaunchVehiclePage from './pages/LaunchVehiclePage';
 import CommentsPage from './pages/CommentsPage';
 import RootLayout from './components/Root';
 import ErrorPage from './pages/Error';
-import InfoCard from './components/InfoCard';
 import Container from '@mui/material/Container';
-import Grid from '@mui/material/Grid';
+import spacecraft from '../db.json';
 //import Album from './components/Album'
 
 
@@ -31,21 +32,14 @@ const router = createBrowserRouter([
 
 function App() {
 
-
   return (
-    <div className='App'>
+    <>
+      <RouterProvider router={router} />
       <Container>
-        <Grid container spacing={2}>
-        <RouterProvider router={router} />
+        
 
-          <InfoCard />
-          <InfoCard />
-          <InfoCard />
-          <InfoCard />
-
-        </Grid>
       </Container>
-    </div>
+    </>
   );
 }
 

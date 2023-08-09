@@ -1,12 +1,13 @@
 /* eslint-disable no-unused-vars */
 import { Outlet } from 'react-router-dom';
-import IconMenu from './IconMenu';
+import CenteredTabs from './TopNav';
+import DrawerAppBar from './TopNav';
 //import classes from '../pages/Root.module.css';
 
 function RootLayout() {
     return (
         <div>
-            {/* <IconMenu /> */}
+            <DrawerAppBar />
             <Outlet />
         </div>
     )

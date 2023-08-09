@@ -1,4 +1,4 @@
-import IconMenu from '../components/IconMenu';
+import IconMenu from '../components/TopNav';
 
 function ErrorPage() {
     return(
