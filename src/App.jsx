@@ -10,8 +10,7 @@ import CommentsPage from './pages/CommentsPage';
 import RootLayout from './components/Root';
 import ErrorPage from './pages/Error';
 import Container from '@mui/material/Container';
-import spacecraft from '../db.json';
-//import Album from './components/Album'
+import Album from './components/Album'
 
 
 const router = createBrowserRouter([
@@ -36,7 +35,7 @@ function App() {
     <>
       <RouterProvider router={router} />
       <Container>
-        
+        <Album />
 
       </Container>
     </>

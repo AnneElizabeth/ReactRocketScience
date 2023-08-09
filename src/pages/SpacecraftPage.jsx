@@ -1,7 +1,9 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
-import SpacecraftInfoCard from '../components/SpacecraftInfoCard'
+import SpacecraftInfoCard from '../components/SpacecraftInfoCard';
+import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
+import spacecraft from '../services/db.json';
 
 
 export default function SpacecraftPage() {
@@ -25,11 +27,13 @@ export default function SpacecraftPage() {
 
   return (
     <div>
-      <Grid container spacing={5} >
-        {spacecraft.map((spacecraft, index) => (
-            <SpacecraftInfoCard spacecraft={spacecraft} key={index} />
-        ))}
-      </Grid>
+      <Container>
+        <Grid container  paddingY={8} spacing={2} >
+          {spacecraft.map((spacecraft, index) => (
+              <SpacecraftInfoCard spacecraft={spacecraft} key={index} />
+          ))}
+        </Grid>
+      </Container>
     </div>
   );
 }

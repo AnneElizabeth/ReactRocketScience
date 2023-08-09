@@ -4,15 +4,16 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 
-export default function SpacecraftInfoCard ({spacecraft}){
+
+export default function LaunchVehicleInfoCard ({launcher}){
     return (
         <>
             <Grid item xs={3}>
                 <Paper elevation={12} square>
-                    <img className='img' src={spacecraft.spacecraft_config.image_url} />
+                    <img className='img' src={launcher.image_url} />
                     <Box paddingX={1}>
                         <Typography variant='h6' component='h6'>
-                            {spacecraft.name}
+                            {launcher.full_name}
                         </Typography>
                         <Box
                             paddingY={1}
@@ -21,9 +22,9 @@ export default function SpacecraftInfoCard ({spacecraft}){
                                 alignItems: 'center',
                             }}>
                             <Typography variant='body2' component='p'>
-                                <strong>Flights:</strong> {spacecraft.flights_count}<br />
-                                <strong>Status:</strong> {spacecraft.status.name}<br />
-                                <strong>Agency:</strong> {spacecraft.spacecraft_config.agency.name}
+                                <strong>Country:</strong> {launcher.manufacturer.country_code}<br />
+                                <strong>Founding Year:</strong> {launcher.manufacturer.founding_year}<br />
+                                <strong>Manufacturer:</strong> {launcher.manufacturer.name}
                             </Typography>
                         </Box>
                     </Box>

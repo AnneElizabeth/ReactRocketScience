@@ -76,7 +76,7 @@ export default function CommentsPage() {
 
   // JSX for new and update user forms
   return (
-    <div className="App">
+    <div>
       <form>
         <h3>Let Us Know Your Thoughts</h3>
         <label>Your Name:</label>

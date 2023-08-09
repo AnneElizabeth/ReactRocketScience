@@ -1,5 +1,10 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
+import SpaceStationInfoCard from '../components/SpaceStationInfoCard';
+import Container from '@mui/material/Container';
+import Grid from '@mui/material/Grid';
+import spacestations from '../services/db.json';
+
 
 export default function SpaceStationPage() {
     const [spacestations, setSpacestations] = useState([]);
@@ -22,15 +27,13 @@ export default function SpaceStationPage() {
 
   return (
     <div>
-      {spacestations.map((spacestation) => (
-        <div key={spacestation.id}>
-          <h3>
-            <span>{spacestation.id}</span> {spacestation.name}
-          </h3>
-          <p>{spacestation.founded}</p>
-        </div>
-      ))}
+      <Container>
+        <Grid container paddingY={8} spacing={2} >
+          {spacestations.map((spacestation, index) => (
+              <SpaceStationInfoCard spacestation={spacestation} key={index} />
+          ))}
+        </Grid>
+      </Container>
     </div>
   );
 }
-

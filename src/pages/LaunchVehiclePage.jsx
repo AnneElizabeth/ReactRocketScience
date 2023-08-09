@@ -1,5 +1,9 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
+import LaunchVehicleInfoCard from '../components/LaunchVehicleInfoCard';
+import Container from '@mui/material/Container';
+import Grid from '@mui/material/Grid';
+import launcher from '../services/db.json';
 
 export default function SpacecraftPage() {
     const [launcher, setLauncher] = useState([]);
@@ -22,14 +26,13 @@ export default function SpacecraftPage() {
 
   return (
     <div>
-      {launcher.map((singleLauncher) => (
-        <div key={singleLauncher.id}>
-          <h3>
-            <span>{singleLauncher.id}</span> {singleLauncher.name}
-          </h3>
-          <p>{singleLauncher.manufacturer.country_code}</p>
-        </div>
-      ))}
+      <Container>
+        <Grid container paddingY={8} spacing={2} >
+          {launcher.map((launcher, index) => (
+              <LaunchVehicleInfoCard launcher={launcher} key={index} />
+          ))}
+        </Grid>
+      </Container>
     </div>
   );
 }

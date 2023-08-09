@@ -16,9 +16,9 @@ export default function CenteredTabs() {
   return (
     <Box sx={{ width: '100%', bgcolor: 'background.paper' }}>
       <Tabs value={value} onChange={handleChange} centered>
-        <Tab component={Link} to='' label="LAUNCHPAD" />
-        <Tab component={Link} to='/spacecraft' label="SPACECRAFT" />
-        <Tab component={Link} to='/spacestations' label="SPACE STATIONS" />
+        <Tab component={Link} to='/' label='LAUNCHPAD' />
+        <Tab component={Link} to='/spacecraft' label='SPACECRAFT' />
+        <Tab component={Link} to='/spacestations' label='SPACE STATIONS' />
         <Tab component={Link} to='/launchvehicles' label='LAUNCH VEHICLES' />
         <Tab component={Link} to='/comments' label='COMMENTS' />
       </Tabs>
