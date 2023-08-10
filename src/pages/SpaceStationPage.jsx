@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 import SpaceStationInfoCard from '../components/SpaceStationInfoCard';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
-import spacestations from '../services/db.json';
 
 
 export default function SpaceStationPage() {

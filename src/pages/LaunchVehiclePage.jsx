@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 import LaunchVehicleInfoCard from '../components/LaunchVehicleInfoCard';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
-import launcher from '../services/db.json';
 
 export default function SpacecraftPage() {
     const [launcher, setLauncher] = useState([]);
