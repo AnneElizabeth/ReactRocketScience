@@ -6,7 +6,7 @@ import './App.css';
 import SpacecraftPage from './pages/SpacecraftPage';
 import SpaceStationPage from './pages/SpaceStationPage';
 import LaunchVehiclePage from './pages/LaunchVehiclePage';
-import FormModal from './components/FormModal'
+import Feedback from './components/Feedback';
 import RootLayout from './components/Root';
 import ErrorPage from './pages/Error';
 import Container from '@mui/material/Container';
@@ -21,7 +21,6 @@ const router = createBrowserRouter([
       { path: '/spacecraft', element: <SpacecraftPage /> },
       { path: '/spacestations', element: <SpaceStationPage /> },
       { path: '/launchvehicles', element: <LaunchVehiclePage /> },
-      { path: '/feedback', element: <FormModal /> }
     ],
   }
 ])
@@ -35,7 +34,7 @@ function App() {
       <RouterProvider router={router} />
       <Container>
         <Album />
-        <FormModal />
+        <Feedback />
 
       </Container>
     </>

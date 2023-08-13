@@ -20,7 +20,6 @@ export default function CenteredTabs() {
         <Tab component={Link} to='/spacecraft' label='SPACECRAFT' />
         <Tab component={Link} to='/spacestations' label='SPACE STATIONS' />
         <Tab component={Link} to='/launchvehicles' label='LAUNCH VEHICLES' />
-        {/* <Tab component={Link} to='/comments' label='COMMENTS' /> */}
       </Tabs>
     </Box>
   );
