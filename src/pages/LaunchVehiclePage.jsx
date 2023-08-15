@@ -9,8 +9,7 @@ export default function SpacecraftPage() {
 
   const getData = () => {
     var requestOptions = {
-      method: "GET",
-      redirect: "follow",
+      method: "GET"
     };
 
     fetch("http://localhost:3000/launcher", requestOptions)

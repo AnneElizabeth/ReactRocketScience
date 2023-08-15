@@ -6,11 +6,11 @@ import './App.css';
 import SpacecraftPage from './pages/SpacecraftPage';
 import SpaceStationPage from './pages/SpaceStationPage';
 import LaunchVehiclePage from './pages/LaunchVehiclePage';
-import Feedback from './components/Feedback';
+import CommentPage from './pages/CommentPage';
 import RootLayout from './components/Root';
 import ErrorPage from './pages/Error';
 import Container from '@mui/material/Container';
-import Album from './components/Album'
+import Album from './components/Album';
 
 
 const router = createBrowserRouter([
@@ -21,24 +21,20 @@ const router = createBrowserRouter([
       { path: '/spacecraft', element: <SpacecraftPage /> },
       { path: '/spacestations', element: <SpaceStationPage /> },
       { path: '/launchvehicles', element: <LaunchVehiclePage /> },
+      { path: '/comments', element: <CommentPage /> }
     ],
   }
 ])
 
-
-
-function App() {
+export default function App() {
 
   return (
     <>
-      <RouterProvider router={router} />
+     <RouterProvider router={router} />
       <Container>
         <Album />
-        <Feedback />
 
       </Container>
     </>
   );
 }
-
-export default App;
