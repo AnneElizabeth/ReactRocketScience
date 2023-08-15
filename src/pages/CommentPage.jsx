@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Container, Paper, Grid, Typography, Box, Button } from '@mui/material';
-import Form from '../components/Form';
+import FeedbackForm from '../components/FeedbackForm';
 
 export default function CommentPage() {
         const API_URL = 'https://64d055bdff953154bb78ca25.mockapi.io/comments'
@@ -26,14 +26,21 @@ export default function CommentPage() {
                 ...newComment,
                 name: nameValue,
             })
+            console.log(newComment)
         }
 
-        function handleEmail() {
-
+        function handleEmail(emailValue) {
+            setNewComment({
+                ...newComment,
+                email: emailValue
+            })
         }
 
-        function handleComment() {
-
+        function handleComment(commentValue) {
+            setNewComment({
+                ...newComment,
+                comment: commentValue
+            })
         }
     
         useEffect(() => {
@@ -48,12 +55,14 @@ export default function CommentPage() {
             .then((data) => setComments(data)) 
         }
 
-        const postComment = () => {
+        const postComment = (e) => {
+            e.preventDefault()
+
             fetch(API_URL,{
                 method: 'POST',
                 headers: { 'ContentType' : 'Application/json'},
                 body: JSON.stringify(newComment)
-            })
+            }).then(() => getComments())
         }
     
     
@@ -65,7 +74,11 @@ export default function CommentPage() {
  */
     return (
         <Container>
-            <Form handleName={handleName} />
+            <FeedbackForm
+                postComment={postComment}
+                handleName={handleName}
+                handleEmail={handleEmail}
+                handleComment={handleComment} />
             <Grid container paddingY={8} spacing={2} >
             {comments.map((comment, index) => (
                 <Grid item xs={6} key={index}>
