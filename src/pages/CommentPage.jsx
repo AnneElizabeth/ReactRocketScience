@@ -65,12 +65,15 @@ export default function CommentPage() {
             }).then(() => getComments())
         }
     
-    
-    
-    
-    
-        /*const deleteComment = () => {}
-    const updateComment = () => {}
+        const deleteComment = (id) => {
+            fetch(`${API_URL}/${id}`,{
+                method: 'DELETE'
+            }).then(() => getComments())
+        }
+
+
+
+    /*const updateComment = () => {}
  */
     return (
         <Container>
@@ -78,7 +81,9 @@ export default function CommentPage() {
                 postComment={postComment}
                 handleName={handleName}
                 handleEmail={handleEmail}
-                handleComment={handleComment} />
+                handleComment={handleComment}
+                deleteComment={deleteComment}
+            />
             <Grid container paddingY={8} spacing={2} >
             {comments.map((comment, index) => (
                 <Grid item xs={6} key={index}>
@@ -103,7 +108,7 @@ export default function CommentPage() {
                                 display: 'flex',
                                 alignItems: 'center',
                             }}>
-                            <Button color='primary' variant='contained'>EDIT</Button>  <Button color='primary' variant='contained'>DELETE</Button>
+                            <Button color='primary' variant='contained'>UPDATE</Button>  <Button onClick={() => deleteComment(comment.id)} color='primary' variant='contained'>DELETE</Button>
                         </Box>
                     </Box>
                 </Paper>
