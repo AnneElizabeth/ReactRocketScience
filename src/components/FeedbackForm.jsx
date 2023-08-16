@@ -1,35 +1,57 @@
 import React, {useState, useEffect} from 'react';
-import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Stack, TextField} from '@mui/material';
-import { IconButton } from '@mui/joy';
-import { Close } from '@mui/icons-material';
+import { Container, Grid, Paper, Box, Typography, Button, Stack, TextField, FormControl, FormLabel} from '@mui/material';
 
-export default function Form ({postComment, handleName, handleEmail, handleComment}) {
-    const [openModal, setOpenModal] = useState(false);
-    const viewForm = () => {
-        setOpenModal(true);
-    }
-    const closeModal = () => {
-        setOpenModal(false);
-    }
+export default function FeedbackForm ({postComment, handleName, handleEmail, handleComment, updateComment}) {
 
     return (
-        <div>
-            <Button onClick={viewForm} color='primary' variant='contained'>Leave Feedback</Button>
-            <Dialog open={openModal} onClose={closeModal} fullWidth maxWidth='md' onSubmit={(e) => postComment(e)}>
-                <DialogTitle>What Do You Think? <IconButton style={{float: 'right'}}><Close onClick={closeModal}></Close></IconButton></DialogTitle>
-                <DialogContent>
-                    <DialogContentText>
-                        Please use this form to provide your feedback.
-                    </DialogContentText>
-                    <Stack spacing={2} margin={2}>
-                        <TextField variant='outlined' label='Name' onChange={(e) => handleName(e.target.value)}></TextField>
-                        <TextField variant='outlined' label='Email' onChange={(e) => handleEmail(e.target.value)}></TextField>
-                        <TextField id='outlined-multiline-flexible' label='Please enter your feedback here.' multiline minRows={5} onChange={(e) => handleComment(e.target.value)}></TextField>
+        <Grid container paddingTop={5} spacing={2} display="flex" justifyContent="center" alignItems="center" >
+            <Grid item xs={8}>
+                <Paper elevation={12} square>
+                    <Box paddingTop={2} paddingX={2} >
+                        <Typography variant='h5' component='h5'>
+                            What Do You Think?
+                        </Typography>
+                    </Box>
+                    <Box
+                            paddingY={2}
+                            paddingX={2}
+                            sx={{
+                                display: 'flex',
+                                alignItems: 'center',
+                            }}>
+                            <Typography variant='body2' component='p'>
+                                Please use this form to provide your feedback.
+                            </Typography>
+                    </Box>
+                </Paper>
+            </Grid>
+            <Grid item xs={8}>
+                <Paper elevation={12} square >
+                    <form onSubmit={postComment}>
+                        <label>NAME:
+                            <input
+                            type="text" 
+                            onChange={(e) => handleName(e.target.value)}
+                            />
+                        </label>
+                        <label>EMAIL:
+                            <input
+                            type="text" 
+                            onChange={(e) => handleEmail(e.target.value)}
+                            />
+                        </label>
+                        <label>COMMENT:
+                            <input
+                            type="textarea"
+                            rows="5"
+                            columns='25' 
+                            onChange={(e) => handleComment(e.target.value)}
+                            />
+                        </label>
                         <Button color='primary' variant='contained' type='submit' >SUBMIT</Button>
-                    </Stack>
-                </DialogContent>
-                <DialogActions></DialogActions>
-            </Dialog>
-        </div>
+                    </form>
+                </Paper>
+            </Grid>
+        </Grid>
     );
 };

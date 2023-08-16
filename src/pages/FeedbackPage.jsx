@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Container, Paper, Grid, Typography, Box, Button } from '@mui/material';
+import { Container, Paper, Grid, Typography, Box, Button, TextField } from '@mui/material';
 import FeedbackForm from '../components/FeedbackForm';
 
 export default function CommentPage() {
@@ -21,6 +21,8 @@ export default function CommentPage() {
             }
         ])
 
+        const [updatedComment, setUpdatedComment] = useState('')
+
         function handleName(nameValue) {
             setNewComment({
                 ...newComment,
@@ -40,6 +42,13 @@ export default function CommentPage() {
             setNewComment({
                 ...newComment,
                 comment: commentValue
+            })
+        }
+
+        function handleUpdatedComment(updatedCommentValue) {
+            setUpdatedComment({
+                ...newComment,
+                comment: updatedCommentValue
             })
         }
     
@@ -71,10 +80,18 @@ export default function CommentPage() {
             }).then(() => getComments())
         }
 
+        const updateComment = (comment) => {
+            let updatedComment = comment
+            updatedComment.comment = updatedComment
+           
+            fetch(`${API_URL}/${comment.id}`, {
+                method: 'PUT',
+                headers: { 'ContentType':'Application/json'},
+                body: JSON.stringify(updatedComment)
+            }).then(() => getComments())
+        }
 
 
-    /*const updateComment = () => {}
- */
     return (
         <Container>
             <FeedbackForm
@@ -83,10 +100,12 @@ export default function CommentPage() {
                 handleEmail={handleEmail}
                 handleComment={handleComment}
                 deleteComment={deleteComment}
+                updateComment={updateComment}
+                handleUpdatedComment={handleUpdatedComment}
             />
-            <Grid container paddingY={8} spacing={2} >
+            <Grid container paddingY={12} spacing={2} >
             {comments.map((comment, index) => (
-                <Grid item xs={6} key={index}>
+                <Grid item xs={12} key={index}>
                 <Paper elevation={12} square>
                     <Box paddingX={1}>
                         <Typography variant='h6' component='h6'>
@@ -108,7 +127,17 @@ export default function CommentPage() {
                                 display: 'flex',
                                 alignItems: 'center',
                             }}>
-                            <Button color='primary' variant='contained'>UPDATE</Button>  <Button onClick={() => deleteComment(comment.id)} color='primary' variant='contained'>DELETE</Button>
+                             <form onSubmit={() => updateComment(comment)}>
+                                <label>UPDATE COMMENT:
+                                    <input
+                                        type="text"
+                                        placeholder='Enter your updated comment here.' 
+                                        onChange={(e) => handleUpdatedComment(e.target.value)}
+                                        />
+                                </label>
+                            </form>
+                            <Button onClick={() => updateComment(comment)} color='primary' variant='contained'>UPDATE</Button>
+                            <Button onClick={() => deleteComment(comment.id)} color='primary' variant='contained'>DELETE</Button>
                         </Box>
                     </Box>
                 </Paper>

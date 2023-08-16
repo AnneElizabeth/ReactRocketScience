@@ -1,13 +1,13 @@
-/* eslint-disable no-undef */
-/* eslint-disable no-unused-vars */
 import React from 'react';
-import Box from '@mui/material/Box';
+import { useState, useEffect} from 'react';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
+import Box from '@mui/material/Box';
 import { Link } from 'react-router-dom';
-    
-export default function CenteredTabs() {
-  const [value, setValue] = React.useState(0);
+
+
+export default function TopNav() {
+  const [value, setValue] = useState(0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -16,12 +16,11 @@ export default function CenteredTabs() {
   return (
     <Box sx={{ width: '100%', bgcolor: 'background.paper' }}>
       <Tabs value={value} onChange={handleChange} centered>
-        <Tab component={Link} to='/' label='LAUNCHPAD' />
-        <Tab component={Link} to='/spacecraft' label='SPACECRAFT' />
-        <Tab component={Link} to='/spacestations' label='SPACE STATIONS' />
-        <Tab component={Link} to='/launchvehicles' label='LAUNCH VEHICLES' />
-        <Tab component={Link} to='/comments' label='COMMENTS' />
-
+        <Tab label="Launchpad" component={Link} to='/' />
+        <Tab label="Spacecraft" component={Link} to='/spacecraft' />
+        <Tab label="Space Stations" component={Link} to='/spacestations' />
+        <Tab label="Launch Vehicles" component={Link} to='/launchvehicles' />
+        <Tab label="Feedback" component={Link} to='/feedback' />
       </Tabs>
     </Box>
   );
