@@ -49,18 +49,9 @@ export default function Launchpad() {
                   Moving Through Space
                 </Typography>
                 <Typography variant="h5" align="center" color="text.secondary" paragraph>
-                  Humans have discovered an endless amount of ways to move around Earth - and Space. 
+                  Humans have discovered an endless amount of ways to move around Earth <strong>and</strong> Space. 
                 </Typography>
-{/*                 <Stack
-                  sx={{ pt: 4 }}
-                  direction="row"
-                  spacing={2}
-                  justifyContent="center"
-                >
-                  <Button variant="contained">LEAVE A COMMENT</Button>
-                  <Button variant="contained">SPACE LAUNCH EVENTS</Button>
-                </Stack>
- */}              </Container>
+              </Container>
             </Box>
             <Container sx={{ py: 8 }} maxWidth="md">
               <Grid container spacing={4}>

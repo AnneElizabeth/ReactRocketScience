@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { Container, Grid, Paper, Box, Typography, Button, Stack, TextField, FormControl, FormLabel} from '@mui/material';
 
 export default function FeedbackForm ({postComment, handleName, handleEmail, handleComment, updateComment}) {
-
+    
     return (
         <Grid container paddingTop={5} spacing={2} display="flex" justifyContent="center" alignItems="center" >
             <Grid item xs={8}>
@@ -27,29 +27,31 @@ export default function FeedbackForm ({postComment, handleName, handleEmail, han
             </Grid>
             <Grid item xs={8}>
                 <Paper elevation={12} square >
+                    <Box paddingY={2} paddingX={2}>
                     <form onSubmit={postComment}>
-                        <label>NAME:
+                        <label>NAME:<br />
                             <input
-                            type="text" 
+                            type="text"
                             onChange={(e) => handleName(e.target.value)}
                             />
-                        </label>
-                        <label>EMAIL:
+                        </label><br /><br />
+                        <label>EMAIL:<br />
                             <input
-                            type="text" 
+                            type="text"
                             onChange={(e) => handleEmail(e.target.value)}
                             />
-                        </label>
-                        <label>COMMENT:
+                        </label><br /><br />
+                        <label>COMMENT:<br />
                             <input
                             type="textarea"
                             rows="5"
                             columns='25' 
                             onChange={(e) => handleComment(e.target.value)}
                             />
-                        </label>
+                        </label><br /><br />
                         <Button color='primary' variant='contained' type='submit' >SUBMIT</Button>
                     </form>
+                    </Box>
                 </Paper>
             </Grid>
         </Grid>

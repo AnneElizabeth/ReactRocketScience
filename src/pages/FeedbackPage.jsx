@@ -28,7 +28,6 @@ export default function CommentPage() {
                 ...newComment,
                 name: nameValue,
             })
-            console.log(newComment)
         }
 
         function handleEmail(emailValue) {
@@ -46,10 +45,7 @@ export default function CommentPage() {
         }
 
         function handleUpdatedComment(updatedCommentValue) {
-            setUpdatedComment({
-                ...newComment,
-                comment: updatedCommentValue
-            })
+            setUpdatedComment(updatedCommentValue)
         }
     
         useEffect(() => {
@@ -69,7 +65,7 @@ export default function CommentPage() {
 
             fetch(API_URL,{
                 method: 'POST',
-                headers: { 'ContentType' : 'Application/json'},
+                headers: { 'Content-Type' : 'application/json'},
                 body: JSON.stringify(newComment)
             }).then(() => getComments())
         }
@@ -81,13 +77,12 @@ export default function CommentPage() {
         }
 
         const updateComment = (comment) => {
-            let updatedComment = comment
-            updatedComment.comment = updatedComment
+            comment.comment = updatedComment
            
             fetch(`${API_URL}/${comment.id}`, {
                 method: 'PUT',
-                headers: { 'ContentType':'Application/json'},
-                body: JSON.stringify(updatedComment)
+                headers: { 'Content-Type':'application/json'},
+                body: JSON.stringify(comment)
             }).then(() => getComments())
         }
 
@@ -127,17 +122,18 @@ export default function CommentPage() {
                                 display: 'flex',
                                 alignItems: 'center',
                             }}>
-                             <form onSubmit={() => updateComment(comment)}>
-                                <label>UPDATE COMMENT:
+                            <form onSubmit={() => updateComment(comment)}>
+                                <label>UPDATE COMMENT:<br />
                                     <input
                                         type="text"
-                                        placeholder='Enter your updated comment here.' 
                                         onChange={(e) => handleUpdatedComment(e.target.value)}
+                                        sx={{width: 150}}
                                         />
-                                </label>
+                                </label><br /><br /> 
+                            
+                                <Button onClick={() => updateComment(comment)} color='primary' variant='contained'>UPDATE</Button>
+                                <Button sx={{ml:5}} onClick={() => deleteComment(comment.id)} color='primary' variant='contained'>DELETE</Button>
                             </form>
-                            <Button onClick={() => updateComment(comment)} color='primary' variant='contained'>UPDATE</Button>
-                            <Button onClick={() => deleteComment(comment.id)} color='primary' variant='contained'>DELETE</Button>
                         </Box>
                     </Box>
                 </Paper>
